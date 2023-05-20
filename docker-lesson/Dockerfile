@@ -1,10 +1,15 @@
 FROM node:16-alpine
 
+RUN set -eux \
+    & apk add \
+        --no-cache \
+        yarn
+
 WORKDIR /app
 
 COPY package.json ./
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
